@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::any('/tus/{any?}', function () {
+    $response = app('tus-server')->serve();
+
+    return $response->send();
+})->where('any', '.*');

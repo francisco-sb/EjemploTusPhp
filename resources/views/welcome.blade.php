@@ -9,6 +9,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        <link href="https://transloadit.edgly.net/releases/uppy/v0.27.5/dist/uppy.min.css" rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -66,31 +67,42 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+         <div id="drag-drop-area"></div>
+           
         </div>
+
+
+        <script src="https://transloadit.edgly.net/releases/uppy/v0.27.5/dist/uppy.min.js"></script>
+        <script>
+        var uppy = Uppy.Core()
+            .use(Uppy.Dashboard, {
+            inline: true,
+            target: '#drag-drop-area',
+            restrictions: {
+                maxFileSize: 1000000,
+                maxNumberOfFiles: 1,
+                minNumberOfFiles: 1,
+                allowedFileTypes: ['video/*']
+            }
+            })
+            .use(Uppy.Tus, {endpoint: 'http://127.0.0.1:8000/tus/'}) 
+
+        uppy.on('complete', (result) => {
+            console.log(`Upload complete! We’ve uploaded these files: ${result.successful}`)
+        })
+
+        uppy.on('upload-error', (file, error) => {
+        console.log('error with file:', file.id)
+        console.log('error message:', error)
+        })
+
+        // const uppy = Uppy.Core({debug: true, autoProceed: false})
+        //         .use(Uppy.Dashboard, {target: '#drag-drop-area', inline: true})
+        //         .use(Uppy.Tus, {endpoint: '/tus/'})
+        //         .run()
+        //     uppy.on('success', (fileCount) => {
+        //         console.log(`${fileCount} files uploaded`)
+        //     })
+        </script>
     </body>
 </html>
