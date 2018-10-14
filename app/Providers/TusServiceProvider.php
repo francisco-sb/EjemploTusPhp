@@ -14,10 +14,10 @@ class TusServiceProvider extends ServiceProvider
 
             $server
                 ->setApiPath('/tus') // tus server endpoint.
-                ->setMaxUploadSize(1)
                 ->setUploadDir(storage_path('app/public/uploads')); // uploads dir.
 
             return $server;
         });
     }
 }
+

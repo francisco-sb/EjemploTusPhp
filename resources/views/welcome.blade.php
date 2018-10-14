@@ -77,19 +77,21 @@
         var uppy = Uppy.Core()
             .use(Uppy.Dashboard, {
             inline: true,
+            resume: true,
+            autoRetry: true,
+            retryDelays: [0, 1000, 3000, 5000],
             target: '#drag-drop-area',
-            restrictions: {
-                maxFileSize: 1000000,
-                maxNumberOfFiles: 1,
-                minNumberOfFiles: 1,
-                allowedFileTypes: ['video/*']
-            }
             })
-            .use(Uppy.Tus, {endpoint: 'http://127.0.0.1:8000/tus/'}) 
+            .use(Uppy.Tus, {endpoint: 'tus/'}) 
 
         uppy.on('complete', (result) => {
+            console.log(result);
             console.log(`Upload complete! We’ve uploaded these files: ${result.successful}`)
         })
+
+        uppy.on('success', (fileCount) => {
+                console.log(`${fileCount} files uploaded`)
+            })
 
         uppy.on('upload-error', (file, error) => {
         console.log('error with file:', file.id)
