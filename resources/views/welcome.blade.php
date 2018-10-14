@@ -82,7 +82,7 @@
             retryDelays: [0, 1000, 3000, 5000],
             target: '#drag-drop-area',
             })
-            .use(Uppy.Tus, {endpoint: '/tus/'}) 
+            .use(Uppy.Tus, {endpoint: 'tus/'}) 
 
         uppy.on('complete', (result) => {
             console.log(result);
