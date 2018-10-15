@@ -16,8 +16,23 @@ Route::get('/', function () {
 });
 
 
+Route::get('/index', function () {
+    return view('index2');
+});
+
+
+
 Route::any('/tus/{any?}', function () {
     $response = app('tus-server')->serve();
 
     return $response->send();
 })->where('any', '.*');
+
+Route::post('/upload', function()
+{
+    return Plupload::receive('file', function ($file)
+    {
+        $file->move(storage_path('app/public/uploads'));
+        return 'ready';
+    });
+});

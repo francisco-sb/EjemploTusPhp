@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3556ca38514c6ecc47ab72a77e9e8a67",
+    "content-hash": "4788f84e5162811208f1df51b9a6a5b3",
     "packages": [
         {
             "name": "ankitpokhrel/tus-php",
@@ -683,6 +683,52 @@
                 }
             ],
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "jildertmiedema/laravel-plupload",
+            "version": "v0.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jildertmiedema/laravel-plupload.git",
+                "reference": "e01ff899276d8049e7a514029ea52f3d5b7cbda3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jildertmiedema/laravel-plupload/zipball/e01ff899276d8049e7a514029ea52f3d5b7cbda3",
+                "reference": "e01ff899276d8049e7a514029ea52f3d5b7cbda3",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.1",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JildertMiedema\\LaravelPlupload": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jildert Miedema",
+                    "email": "jildertmiedema@gmail.com"
+                }
+            ],
+            "description": "Laravel 5/Plupload - Handle large file uploads",
+            "keywords": [
+                "laravel",
+                "large files",
+                "pluload"
+            ],
+            "time": "2018-05-23T11:36:57+00:00"
         },
         {
             "name": "laravel/framework",
